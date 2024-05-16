@@ -1,7 +1,7 @@
-import "./App.css";
+
 import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
-import Modal from "react-modal";
+import Modal from "react-modal"; 
 import Loader from "./src/components/Loader/Loader";
 import ErrorMessage from "./src/components/ErrorMessage/ErrorMessage";
 import SearchBar from "./src/components/SearchBar/SearchBar";
