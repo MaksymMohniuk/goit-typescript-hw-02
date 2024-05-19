@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import { Photo } from "../../../App";
 
 const customStyles = {
   content: {
@@ -11,19 +12,26 @@ const customStyles = {
   },
 };
 
-const ImageModal = ({ modalData, modalIsOpen, closeModal, afterOpenModal }) => {
+interface ImageModalProps {
+  modalData: Photo | null;
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  afterOpenModal: () => void;
+}
+
+const ImageModal: React.FC<ImageModalProps> = ({ modalData, modalIsOpen, closeModal, afterOpenModal }) => {
   return (
     <>
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
-        afterOpenModal={afterOpenModal}
+        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
       >
         <div>
           <button onClick={closeModal}>Close Modal</button>
           {modalData && (
-            <img width={500} src={modalData.src} alt={modalData.alt} />
+            <img width={500} src={modalData.urls.regular} alt={modalData.description} />
           )}
         </div>
       </Modal>

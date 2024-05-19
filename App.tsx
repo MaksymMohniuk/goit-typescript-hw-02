@@ -12,7 +12,7 @@ import ImageModal from "./src/components/ImageModal/ImageModal";
 
 Modal.setAppElement("#root");
 
-interface Photo {
+export interface Photo {
   id: string;
   urls: {
     regular: string;
@@ -62,18 +62,18 @@ const App = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const openModal = (photo : Photo) => {
+  const openModal = (photo : Photo) : void => {
     setSelectedPhoto(photo);
     setIsOpen(true);
   };
 
-  function afterOpenModal() {
+  function afterOpenModal() : void {
     if (subtitleRef.current) {
       subtitleRef.current.style.color = "rgba(0, 0, 0, 0.8)";
     }
   }
 
-  const closeModal = () => {
+  const closeModal = () : void => {
     setIsOpen(false);
     setSelectedPhoto(null);
   };

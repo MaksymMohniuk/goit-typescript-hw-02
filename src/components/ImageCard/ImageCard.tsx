@@ -1,11 +1,15 @@
+import { Photo } from "../../../App";
 import styles from "./ImageCard.module.css";
 
-const ImageCard = ({ photo, onImageClick }) => {
-  const onClick = () =>
-    onImageClick({
-      src: photo.urls.regular,
-      alt: photo.alt_description,
-    });
+interface ImageCardProps {
+  photo: Photo;
+  onImageClick: (photo: Photo) => void;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({ photo, onImageClick }) => {
+    const onClick = () => {
+      onImageClick(photo); 
+    };
   return (
     <div className={styles["image-card-container"]}>
       <img
@@ -13,7 +17,7 @@ const ImageCard = ({ photo, onImageClick }) => {
         width={250}
         onClick={onClick}
         src={photo.urls.small}
-        alt={photo.alt_description}
+        alt={photo.description || ''}
       />
       <h2 className={styles["image-card-description"]}>
         Description: {photo.description}

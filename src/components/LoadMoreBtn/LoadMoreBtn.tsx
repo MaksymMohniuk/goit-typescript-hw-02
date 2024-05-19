@@ -1,6 +1,10 @@
 import styles from "./LoadMoreBtn.module.css";
 
-const LoadMoreBtn = ({ loadMore }) => {
+interface LoadMoreBtnProps {
+  loadMore: () => void;
+}
+
+const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({ loadMore }) => {
   return (
     <div className={styles["load-more-btn-container"]}>
       <button className={styles["load-more-btn"]} onClick={loadMore}>

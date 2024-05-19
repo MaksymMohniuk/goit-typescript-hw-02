@@ -11,8 +11,12 @@ const FORM_INITIAL_VALUES = {
   searchContent: "",
 };
 
-const SearchBar = ({ onSetSearchQuery }) => {
-  const handleSubmit = (values) => {
+interface SearchBarProps {
+  onSetSearchQuery: (searchTerm: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSetSearchQuery }) => {
+  const handleSubmit = (values : { searchContent: string }) => {
     if (!values.searchContent.trim()) {
       toast.error("Необхідно ввести текст для пошуку зображень");
       return;
