@@ -9,18 +9,17 @@ interface Photo {
   description: string;
   likes: number;
 }
+
 interface ApiResponse {
-  data: Photo[];
+  results: Photo[];
 }
 
-
-export const requestPhotos = async(): Promise<ApiResponse> => {
+export const requestPhotos = async (): Promise<Photo[]> => {
   const response = await axios.get<ApiResponse>(
     "https://api.unsplash.com/photos/?client_id=oGYzQqArk2YQGtYqQNUjoqd5R_WjC4bentc-JV8nvfk"
   );
-  return response.data;
+  return response.data.results;
 };
-
 
 export const requestContentByQuery = async (query: string, page: number): Promise<ApiResponse> => {
   const response = await axios.get<ApiResponse>(

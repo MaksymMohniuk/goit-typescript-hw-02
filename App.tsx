@@ -38,7 +38,7 @@ const App = () => {
       try {
         setIsLoading(true);
         const response = await requestContentByQuery(query, page);
-        const data = response.data;
+        const data = response.results;
         if (page > 1) {
           setPhotos((prevPhotos) => [...(prevPhotos || []), ...data]);
         } else {
